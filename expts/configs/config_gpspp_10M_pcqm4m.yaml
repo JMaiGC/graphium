@@ -4,7 +4,7 @@ constants:
   seed: &seed 42
   raise_train_error: true   # Whether the code should raise an error if it crashes during training
   accelerator:
-    type: ipu  # cpu or ipu or gpu
+    type: cpu  # cpu or ipu or gpu
 
 datamodule:
   module_type: "MultitaskFromSmilesDataModule"
@@ -59,8 +59,8 @@ datamodule:
 
 
     # Data handling-related
-    batch_size_training: 16
-    batch_size_inference: 16
+    batch_size_training: 14
+    batch_size_inference: 14
     # cache_data_path: .
     num_workers: 20 # -1 to use all
     persistent_workers: False # if use persistent worker at the start of each epoch.
@@ -199,7 +199,7 @@ predictor:
     # loss_scaling: 1024
   torch_scheduler_kwargs:
     module_type: WarmUpLinearLR
-    max_num_epochs: &max_epochs 100
+    max_num_epochs: &max_epochs 10
     warmup_epochs: 10
     verbose: False
   scheduler_kwargs:
@@ -246,5 +246,5 @@ trainer:
     precision: *precision
     max_epochs: *max_epochs
     min_epochs: 1
-    accumulate_grad_batches: 4
+    accumulate_grad_batches: 1
     check_val_every_n_epoch: 20
