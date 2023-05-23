@@ -74,8 +74,8 @@ datamodule:
 
     ipu_dataloader_inference_opts:
       mode: async
-      max_num_nodes_per_graph: 16 # valid max nodes: 51, max_edges: 118
-      max_num_edges_per_graph: 120
+      max_num_nodes_per_graph: 20 # valid max nodes: 51, max_edges: 118
+      max_num_edges_per_graph: 60
       # test-dev max nodes: 50, max_edges: 116
       # test-challenge max nodes: 51, max_edges: 106
 
@@ -247,4 +247,4 @@ trainer:
     max_epochs: *max_epochs
     min_epochs: 1
     accumulate_grad_batches: 1
-    check_val_every_n_epoch: 20
+    check_val_every_n_epoch: 10
