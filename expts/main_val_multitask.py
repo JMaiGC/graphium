@@ -69,7 +69,7 @@ def main(cfg: DictConfig, run_name: str = "main", add_date_time: bool = True) ->
 
     # Run the model validation
     with SafeRun(name="VALIDATING", raise_error=cfg["constants"]["raise_train_error"], verbose=True):
-        trainer.validate(model=predictor, ckpt_path="models_checkpoints/PCMQv2/pcqm4mv2_gpspp_4layer_cpu.ckpt", datamodule=datamodule)
+        trainer.validate(model=predictor, ckpt_path="models_checkpoints/PCMQv2/pcqm4mv2_gpspp_4layer_cpu_fp32.ckpt", datamodule=datamodule)
 
     logger.info("--------------------------------------------")
     logger.info("total computation used", timeit.default_timer() - st)
