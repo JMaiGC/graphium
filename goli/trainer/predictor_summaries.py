@@ -242,6 +242,9 @@ class Summary(SummaryInterface):
         targets = self.targets.to(dtype=self.predictions.dtype, device=self.predictions.device)
         # apply denormalization for predictions
         self.predictions = self.task_specific_norm.denormalize(self.predictions)
+        if self.step_name == "val":
+            filename = "valid_results/valid_results.pkl"
+            torch.save(self.predictions, filename, pickle_protocol=4)
         if self.step_name == "train":
             # apply denormalization for targets
             targets = self.task_specific_norm.denormalize(targets)
